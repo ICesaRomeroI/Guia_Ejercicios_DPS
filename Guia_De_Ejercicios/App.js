@@ -7,6 +7,7 @@ import Clinica from './src/screens/Clinica';
 import ConsultandoIP from './src/screens/ConsultandoIP';
 import API_REST from './src/screens/API_REST';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Paciente from './src/screens/ClinicaRes';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
         <Stack.Screen name="Clinica" component={Clinica} />
         <Stack.Screen name="ConsultandoIP" component={ConsultandoIP} />
         <Stack.Screen name="API_REST" component={API_REST} />
+        <Stack.Screen name="Paciente" component={Paciente} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -30,34 +32,34 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  image:{
-    width:'100%',
+  image: {
+    width: '100%',
     height: '100%',
     resizeMode: 'cover',
   },
-  login:{
-    width:350,
+  login: {
+    width: 350,
     height: 500,
-    borderColor:'#fff',
-    borderWidth:2,
+    borderColor: '#fff',
+    borderWidth: 2,
     borderRadius: 10,
     padding: 10,
     alignItems: 'center',
   },
-  imagePerfil:{
-    width:100,
-    height:100,
+  imagePerfil: {
+    width: 100,
+    height: 100,
     borderRadius: 50,
-    borderColor:'#fff',
-    borderWidth:2,
+    borderColor: '#fff',
+    borderWidth: 2,
     marginVertical: 30,
   },
-  text:{
+  text: {
     fontSize: 17,
     fontWeight: '400',
     color: 'white',
   },
-  input:{
+  input: {
     width: 250,
     height: 40,
     borderColor: '#fff',
@@ -68,12 +70,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff90',
     marginBottom: 20,
   },
-  textButton:{
-    fontSize:17,
+  textButton: {
+    fontSize: 17,
     fontWeight: '400',
-    color:'white',
+    color: 'white',
   },
-  button:{
+  button: {
     width: 250,
     height: 40,
     borderRadius: 10,
