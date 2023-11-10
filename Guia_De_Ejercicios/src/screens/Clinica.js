@@ -9,8 +9,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Clinica = ({ navigation }) => {
     const [date, setDate] = useState(new Date());
-    const [showDatePicker, setShowDatePicker] = useState(false); // Agregar esta línea
-    const [selectedDate, setSelectedDate] = useState(new Date()); // Agregar esta línea
+    const [showDatePicker, setShowDatePicker] = useState(false); 
+    const [selectedDate, setSelectedDate] = useState(new Date());
 
 
     const formatDate = (date) => {
@@ -26,7 +26,7 @@ const Clinica = ({ navigation }) => {
         if (event.type === 'set') {
             setShowDatePicker(false);
             setSelectedDate(selectedDate);
-            setDate(selectedDate); // Actualizar la fecha de nacimiento
+            setDate(selectedDate);
             formik.setFieldValue('fechanac', formatDate(selectedDate));
         }
     };
@@ -59,7 +59,7 @@ const Clinica = ({ navigation }) => {
                     const dateParts = originalValue.split('/');
                     if (dateParts.length === 3) {
                         const year = parseInt(dateParts[2], 10);
-                        const month = parseInt(dateParts[1], 10) - 1; // Los meses en JavaScript comienzan desde 0
+                        const month = parseInt(dateParts[1], 10) - 1;
                         const day = parseInt(dateParts[0], 10) + 2;
                         return new Date(year, month, day);
                     }
@@ -72,7 +72,7 @@ const Clinica = ({ navigation }) => {
             const hoy = new Date(Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), new Date().getUTCDate()));
             const edad = hoy.getFullYear() - nacimiento.getFullYear();
 
-            // Lógica para determinar la etapa
+           
             let etapa = '';
             if (edad >= 0 && edad <= 5) {
                 etapa = 'Primera infancia';
@@ -232,7 +232,7 @@ const Clinica = ({ navigation }) => {
 
                             <TouchableOpacity onPress={() => {
                                 formik.resetForm();
-                                setDate(new Date()); // Restablecer la fecha a su valor inicial
+                                setDate(new Date());
                             }} style={[styles.button, { backgroundColor: 'red' }]}>
                                 <Icon name="undo" size={15} color="white" />
                                 <Text style={styles.textButton}>Reiniciar</Text>
