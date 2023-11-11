@@ -3,7 +3,7 @@ import { View, Text, TextInput, Button, Image, ScrollView, TouchableOpacity, Sty
 import { BlurView } from 'expo-blur';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { SvgUri } from 'react-native-svg-uri';
+import { SvgUri } from 'react-native-svg';
 
 const API_URL = 'http://ipwho.is/';
 
@@ -77,6 +77,7 @@ const ConsultandoIP = () => {
                     org: responseData.connection ? (responseData.connection.org || '') : 'No disponible',
                     isp: responseData.connection ? (responseData.connection.isp || '') : 'No disponible',
                     domain: responseData.connection ? (responseData.connection.domain || '') : 'No disponible',
+                    flagImageUrl: `http://cdn.ipwhois.io/flags/${responseData.country_code.toLowerCase()}.svg`,
                 };
 
                 // Guardar la hora actual en el objeto de datos
@@ -144,13 +145,16 @@ const ConsultandoIP = () => {
                                 <Text style={styles.text}>Región: {data.region}</Text>
                                 <Text style={styles.text}>Ciudad: {data.city}</Text>
                                 <Text style={styles.text}>Capital: {data.capital}</Text>
-                                
-                                <SvgUri
-                                  width={24}
-                                 height={24}
-                                 source={{ uri: `http://cdn.ipwhois.io/flags/${data?.country_code?.toLowerCase()}.svg` }}
-                               />
-    
+                                <View style={{ width: 100, height: 100, marginBottom: 15, marginTop: 15 }}>
+                                    <SvgUri
+
+                                        width={200}
+                                        height={200}
+                                        preserveAspectRatio='none'
+                                        viewBox='0 0 900 1000'
+                                        uri={`http://cdn.ipwhois.io/flags/${data.country_code.toLowerCase()}.svg`}
+                                    />
+                                </View>
                                 <Text style={styles.text}>Fecha actual: {data.horaAc}</Text>
                                 <Text style={[styles.text, { textAlign: 'center', marginTop: '10%' }]}>Datos de conexión:</Text>
                                 <Text style={styles.text}>-------------------------------------</Text>
@@ -185,12 +189,15 @@ const ConsultandoIP = () => {
                                     <Text style={styles.text}>Código de País: {saved.country_code}</Text>
                                     <Text style={styles.text}>Región: {saved.region}</Text>
                                     <Text style={styles.text}>Ciudad: {saved.city}</Text>
-                                    
-                                    <SvgUri
-                                     width={24}
-                                     height={24}
-                                     source={{ uri: `http://cdn.ipwhois.io/flags/${data?.country_code?.toLowerCase()}.svg` }}
-                                    />
+                                    <View style={{ width: 100, height: 100, marginBottom: 15, marginTop: 15 }}>
+                                        <SvgUri
+                                            width={200}
+                                            height={200}
+                                            preserveAspectRatio='none'
+                                            viewBox='0 0 900 1000'
+                                            uri={saved.flagImageUrl} 
+                                        />
+                                    </View>
                                     <Text style={styles.text}>Fecha actual: {saved.horaAc ? saved.horaAc : 'No disponible'}</Text>
                                     <Text style={[styles.text, { textAlign: 'center', marginTop: '10%' }]}>Datos de conexión:</Text>
                                     <Text style={styles.text}>-------------------------------------</Text>
@@ -290,7 +297,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     buttonContainer: {
-        marginTop: 10, 
+        marginTop: 10,
         alignSelf: 'center',
     },
 });
