@@ -9,8 +9,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Clinica = ({ navigation }) => {
     const [date, setDate] = useState(new Date());
-    const [showDatePicker, setShowDatePicker] = useState(false); 
-    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [showDatePicker, setShowDatePicker] = useState(false);
+    const [selectedDate, setSelectedDate] = useState(new Date()); 
 
 
     const formatDate = (date) => {
@@ -72,7 +72,7 @@ const Clinica = ({ navigation }) => {
             const hoy = new Date(Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), new Date().getUTCDate()));
             const edad = hoy.getFullYear() - nacimiento.getFullYear();
 
-           
+            // Lógica para determinar la etapa
             let etapa = '';
             if (edad >= 0 && edad <= 5) {
                 etapa = 'Primera infancia';
@@ -232,7 +232,7 @@ const Clinica = ({ navigation }) => {
 
                             <TouchableOpacity onPress={() => {
                                 formik.resetForm();
-                                setDate(new Date());
+                                setDate(new Date()); // Restablecer la fecha a su valor inicial
                             }} style={[styles.button, { backgroundColor: 'red' }]}>
                                 <Icon name="undo" size={15} color="white" />
                                 <Text style={styles.textButton}>Reiniciar</Text>
