@@ -27,8 +27,6 @@ const RegistroEquiposScreen = () => {
 
   const handleRegistroEquipo = () => {
     // Lógica para registrar el equipo y sus integrantes
-    // Puedes enviar estos datos a tu backend o almacenarlos localmente según tus necesidades.
-    // Asegúrate de validar que se cumplan las consideraciones (mínimo 5 jugadores, máximo 10 jugadores).
   };
 
   return (
